@@ -1,9 +1,15 @@
-<template></template>
+<template>
+  <Input />
+</template>
 
 <script>
+import Input from "./components/Input.vue";
+
 export default {
   name: "App",
-  components: {},
+  components: {
+    Input,
+  },
 };
 </script>
 
