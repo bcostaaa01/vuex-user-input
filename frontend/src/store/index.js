@@ -10,7 +10,7 @@ export default createStore({
       state.items.push(item);
     },
     removeItem(state, index) {
-      state.items = state.items.filter((item, i) => i !== index);
+      state.items = state.items.filter((_item, i) => i !== index);
     },
   },
   actions: {

@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <form @prevent.default="addItem">
+  <div >
+    <form @submit.prevent="addItem">
       <input v-model="newItem" placeholder="Add a new item" />
       <button type="submit">Add</button>
     </form>
@@ -14,15 +14,26 @@
 </template>
 
 <script>
-import store from "../store/index";
+import { mapState } from "vuex";
 
 export default {
   name: "Input",
-  store,
   data() {
     return {
-      newItem: "",
+      newItem: '',
     };
+  },
+  computed: {
+    ...mapState(["items"]),
+  },
+  methods: {
+    addItem() {
+        this.$store.dispatch('addItem', this.newItem)
+        this.newItem = ''
+    },
+    removeItem(index) {
+        this.$store.dispatch('removeItem', index)
+    },
   },
 };
 </script>
